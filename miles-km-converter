@@ -1,0 +1,36 @@
+#convert miles to km
+import time
+
+def errormsg(nr):
+    if nr == 1:
+        return ("\n---Inte ett korrekt tal. Försök igen---\n")
+
+def quest(a):
+    while True:
+        try:
+            x = float(input(a))
+        except:
+            print(errormsg(1))
+        else:
+            return x
+
+def converter(miles):
+    km = miles*1.6
+    print("km: ",round(km,1))
+    
+def main():
+    question = quest("Ange miles: ")
+    print("\nprocessing",end='')
+    time.sleep(1)
+    print(".",end='')
+    time.sleep(1)
+    print(".",end='')
+    time.sleep(1)
+    print(".",end='')
+    print("\n")
+    converter(question)
+    print("")
+
+if __name__ == '__main__':
+    while True:
+        main()
