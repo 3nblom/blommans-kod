@@ -1,0 +1,198 @@
+#-----------------------------Swords and sandals: Gladiator------------------------------#
+# 1v1 arena
+# Multiplayer
+# Requires: 2 players
+
+fireball_dmg = 3.5
+fireball_mana = 3.0
+heal_health = 5.0
+heal_mana = 4.0
+strike_dmg = 1.5
+strike_mana = 0
+mana_potion = 6.0
+
+player1_health = 10
+player1_mana = 10
+player1_mana_potion = 1
+
+player2_health = 10
+player2_mana = 10
+player2_mana_potion = 1
+
+print("Welcome to --- Swords and sandals: Gladiator ---")
+print("")
+player1 = input("Player 1 - Choose name: ")
+print("")
+player2 = input("Player2 - Choose name: ")
+print("")
+print("|----- List of available spells -----|")
+print("1: Fireball - 35 damage - 30 mana")
+print("2: Heal - restore 50 health - 40 mana")
+print("3: Punch - 15 damage - free cast")
+print("4: Mana potion - restores 60 mana (unique)")
+print("")
+o = input("PRESS ENTER TO START GAME...")
+print("")
+print("Let the game begin!")
+print("")
+print(player2, " approaches. What will ",player1," do?")
+
+
+while True:
+
+    if player1_health <= 0:
+        print("")
+        print(player1, " has been killed.")
+        print(player2, " is VICTORIOUS!")
+        break
+    else:
+        
+        #Player1 cast
+        print("")
+        print(player1)
+        c1 = int(input("Cast: "))
+        print("")
+        if c1 == 1 and player1_mana > fireball_mana:
+            player1_mana -= fireball_mana
+            player2_health -= fireball_dmg
+            print(player1," cast fireball! ", player2, " loses ",int(fireball_dmg*10), " health.")
+            print("")
+            print(player1)
+            print("health: ",(int(player1_health*2)*("♥")))
+            print("mana:   ",(int(player1_mana*2)*("-")))
+            print("")
+            print(player2)
+            print("health: ",(int(player2_health*2)*("♥")))
+            print("mana:   ",(int(player2_mana*2)*("-")))
+            print("")
+        elif c1 == 2 and player1_mana >= heal_mana:
+            player1_mana -= heal_mana
+            player1_health += heal_health
+            if player1_health > 10:
+                player1_health = 10
+                print(player1," overhealed.")
+                print("")
+                print(player1," health: ",(int(player1_health*2)*("♥")))
+                print(player1," mana:   ",(int(player1_mana*2)*("-")))
+                print("")
+                print(player2," health: ",(int(player2_health*2)*("♥")))
+                print(player2," mana:   ",(int(player2_mana*2)*("-")))
+                print("")
+            else:
+                print(player1," restore +50 health.")
+                print("")
+                print(player1," health: ",(int(player1_health*2)*("♥")))
+                print(player1," mana:   ",(int(player1_mana*2)*("-")))
+                print("")
+                print(player2," health: ",(int(player2_health*2)*("♥")))
+                print(player2," mana:   ",(int(player2_mana*2)*("-")))
+                print("")
+        elif c1 == 3:
+            player1_mana -= strike_mana
+            player2_health -= strike_dmg
+            print(player1," strike. ", player2, " loses ",int(strike_dmg*10), " health.\n")
+            print(player1," health: ",(int(player1_health*2)*("♥")))
+            print(player1," mana:   ",(int(player1_mana*2)*("-")))
+            print("")
+            print(player2," health: ",(int(player2_health*2)*("♥")))
+            print(player2," mana:   ",(int(player2_mana*2)*("-")))
+            print("")
+        elif c1 == 4:
+            if player1_mana_potion == 1:
+                player1_mana += 6
+                if player1_mana > 10:
+                    player1_mana = 10
+                print(player1," drinks a mana potion and restores ",int(mana_potion*10)," mana.")
+                print("")
+                print(player1," health: ",(int(player1_health*2)*("♥")))
+                print(player1," mana:   ",(int(player1_mana*2)*("-")))
+                print("")
+                print(player2," health: ",(int(player2_health*2)*("♥")))
+                print(player2," mana:   ",(int(player2_mana*2)*("-")))
+                print("")
+                player1_mana_potion = 0
+            elif player1_mana_potion == 0:
+                print("There's no more mana potions and the time has run out.")
+                print("")
+        elif c1 > 4:
+            print("That spell is not learned yet")
+        else:
+            print(player1," does not have enough mana and has ran out of time.\n")
+
+     
+    if player2_health <= 0:
+        print("")
+        print(player2, " has been killed.")
+        print(player1, " is VICTORIOUS!")
+        break
+    else:
+        
+        #Player2 cast
+        print("")
+        print(player2)
+        c2 = int(input("Cast: "))
+        print("")
+        if c2 == 1 and player2_mana >= fireball_mana:
+            player2_mana -= fireball_mana
+            player1_health -= fireball_dmg
+            print(player2," cast fireball! ", player1, " loses ",int(fireball_dmg*10), " health.")
+            print("")
+            print(player1," health: ",(int(player1_health*2)*("♥")))
+            print(player1," mana:   ",(int(player1_mana*2)*("-")))
+            print("")
+            print(player2," health: ",(int(player2_health*2)*("♥")))
+            print(player2," mana:   ",(int(player2_mana*2)*("-")))
+            print("")
+        elif c2 == 2 and player2_mana >= heal_mana:
+            player2_mana -= heal_mana
+            player2_health += heal_health
+            if player2_health > 10:
+                player2_health = 10
+                print(player2," overhealed.")
+                print("")
+                print(player1," health: ",(int(player1_health*2)*("♥")))
+                print(player1," mana:   ",(int(player1_mana*2)*("-")))
+                print("")
+                print(player2," health: ",(int(player2_health*2)*("♥")))
+                print(player2," mana:   ",(int(player2_mana*2)*("-")))
+                print("")
+            else:
+                print(player2," restores +50 health.")
+                print("")
+                print(player1," health: ",(int(player1_health*2)*("♥")))
+                print(player1," mana:   ",(int(player1_mana*2)*("-")))
+                print("")
+                print(player2," health: ",(int(player2_health*2)*("♥")))
+                print(player2," mana:   ",(int(player2_mana*2)*("-")))
+                print("")
+        elif c2 == 3:
+            player2_mana -= strike_mana
+            player1_health -= strike_dmg
+            print(player2," strike. ", player1, " loses ",int(strike_dmg*10), " health.\n")
+            print(player1," health: ",(int(player1_health*2)*("♥")))
+            print(player1," mana:   ",(int(player1_mana*2)*("-")))
+            print("")
+            print(player2," health: ",(int(player2_health*2)*("♥")))
+            print(player2," mana:   ",(int(player2_mana*2)*("-")))
+            print("")
+        elif c2 == 4:
+            if player2_mana_potion == 1:
+                player2_mana += 6
+                if player2_mana > 10:
+                    player2_mana = 10
+                print(player2," drinks a mana potion and restores ",int(mana_potion*10)," mana.")
+                print("")
+                print(player1," health: ",(int(player1_health*2)*("♥")))
+                print(player1," mana:   ",(int(player1_mana*2)*("-")))
+                print("")
+                print(player2," health: ",(int(player2_health*2)*("♥")))
+                print(player2," mana:   ",(int(player2_mana*2)*("-")))
+                print("")
+                player2_mana_potion = 0
+            elif player2_mana_potion == 0:
+                print("There's no more mana potions and the time has run out.")
+                print("")
+        elif c2 > 4:
+            print("That spell is not learned yet")
+        else:
+            print(player2," does not have enough mana and has ran out of time.\n")
