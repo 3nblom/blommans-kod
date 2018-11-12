@@ -1,0 +1,64 @@
+#Inlämningsuppgift 3
+#av: Marcus Enblom
+
+#mata in x antal tal
+#spara tal i array
+#användaren kan hämta information om listan
+
+import sys #för att kunna köra "try, except osv"
+
+lis = []      #tom lista
+r = 1         #variabel för att "Ange tal nr ??" ska ändras
+
+while len(lis) <= 9:            #While loopen ska köras x (9) antal gånger (kan enkelt ändras)
+    try:
+        lis.append(int(input("Ange tal nr {}: ".format(r))))  #lägger till inmatning i lista: lis
+        r += 1
+    except (ValueError):  #Try + Except för att programmet inte ska krascha vid fel format                                      
+        print("Du kan endast skriva in heltal. Försök igen")
+    continue
+
+#---Användarmenyn---#
+print("\nVälj vad du vill göra:")
+print("1. Visa största talet")
+print("2. Visa minsta talet")
+print("3. Visa medelvärdet med en decimal")
+print("4. Visa alla inmatade tal")
+print("5. Avsluta detta program")
+
+#While-loop som kör tills användaren avslutar genom att trycka in "5"
+while True:
+    try:
+        q = int(input("\nVälj: "))
+        print("")
+    except (ValueError):  #Try + Except för att programmet inte ska krascha vid fel format
+        print("Du har angett ett felaktigt val. Försök igen.")
+    else:
+
+        if q < 1 or q > 5:                #Ger användaren ett nytt försök vid fel inmatning
+            print("Du har angett ett felaktigt val. Försök igen.")
+            
+        else:
+            if q == 1:
+                print("Största inmatade talet är: ",max(lis))
+                
+            elif q == 2:
+                print("Minsta inmatade talet är: ",min(lis))
+                
+            elif q == 3:
+                print("Medelvärdet av de inmatade talen är: ",(sum(lis)/len(lis)))
+                
+            elif q == 4:
+                print("Talen som matades in var: ",end='')
+                for i in range(len(lis)):                     #kör en loop som printar listan
+                    if (i) != len(lis) - 1:                   
+                        print(lis[i],", ",sep='',end='')      
+                    else:
+                        print(lis[i],sep='',end='') #för att komma inte ska hamna efter sista
+                print("")
+                
+            elif q == 5:
+                print("Avslutar program...\n")
+                break                               #Avslutar programmet med "break"
+                 
+
