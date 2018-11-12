@@ -1,0 +1,37 @@
+#Lotto
+#Slumpa fram 7 tal mellan 1-35
+#Visa lottorad
+
+import random
+
+print("Välkommen till lotto!")
+print("")
+    
+
+def main():
+
+#----lista----#    
+    lottorad = []
+
+#----så länge listan är kortare än 7 siffror så kommer den att addera ett nytt nr----#
+    while len(lottorad) < 7:
+        new_nr = (random.randint(1, 35))
+        if new_nr not in lottorad:
+            lottorad.append(new_nr)
+
+#----kör en loop som är lika lång som listan = kör igenom alla tal i listan----#
+    for listamount in range(len(lottorad)-1):
+        for i in range(len(lottorad)-1):      #----flyttar alla tal minst 7 steg----#
+            if lottorad[i] > lottorad[i+1]:
+                temp = lottorad[i]
+                lottorad[i] = lottorad[i+1]
+                lottorad[i+1] = temp
+
+    print("Veckans lottorad är:")
+    for i in range(len(lottorad)):
+        print(str(lottorad[i]),"",end='')
+    print("")
+
+
+if __name__=='__main__':
+    main()
