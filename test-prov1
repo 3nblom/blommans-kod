@@ -1,0 +1,12 @@
+
+print("HASTIGHET")
+print("=========")
+print("")
+
+while True:
+    km = float(input("Ange sträckan (km): "))
+    h = float(input("Ange tiden (h): "))
+    kmh = km/h
+    print("")
+    print("Medelhastigheten är: ",round(kmh)," km/h")
+    print("")
