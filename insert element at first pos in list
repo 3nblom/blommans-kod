@@ -1,0 +1,9 @@
+#insert element at first position in a list
+
+def insert_element_first(element, a_list):
+    a_list.insert(0, element)
+    
+    return a_list
+
+
+print(insert_element_first(99, [1, 2, 3]))
