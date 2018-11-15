@@ -2,10 +2,8 @@
 
 
 def space_exists(word):
-    if ' ' in word:
-        return True
-    else:
-        return False
+
+  return ' ' in word
 
 while True:
     space = input("Mening: ")
