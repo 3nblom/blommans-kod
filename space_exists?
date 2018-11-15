@@ -1,0 +1,12 @@
+#Checks to see if a string has a space and returns True or False based on the users input.
+
+
+def space_exists(word):
+    if ' ' in word:
+        return True
+    else:
+        return False
+
+while True:
+    space = input("Mening: ")
+    print(space_exists(space))
