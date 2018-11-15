@@ -1,0 +1,8 @@
+#insert element at last position in a list
+
+def insert_element_last(element, a_list):
+
+    a_list.append(element)
+    return a_list
+
+print(insert_element_last(4, [1,2,3]))
