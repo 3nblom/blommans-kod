@@ -1,6 +1,6 @@
 #Return True or False if year is leap year + return amount of days in user input month of that year
 
-month_days = [0,31,28,31,30,31,30,31,31,30,31,30,31]
+month_days = [0,31,28,31,30,31,30,31,31,30,31,30,31]      #0 in order to set January at #1 and so on
 
 def main():
     
@@ -21,10 +21,8 @@ def main():
         return month_days[month]
 
 
-    year_input = int(input("Year: "))
-    month_input = int(input("Month: "))
-    print("Is",year_input,"a leap year?:",leap_year(year_input))
-    print("Amount of days in month",month_input," is:",days_in_month(year_input,month_input))
+    print(leap_year(2016))
+    print(days_in_month(2016,2))
 
 
 if __name__=='__main__':
