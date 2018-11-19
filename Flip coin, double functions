@@ -1,0 +1,63 @@
+"""
+Program uses 3 functions.
+
+flip_coins takes in two arguments
+which will be the name of the 3 variables "arg1" and "arg2" + "runs". The
+arguments will have 50% of receiving 1 value and how many times the coin
+will flip is determined by the user via "runs".
+
+print_coin_result will take the returned item "a_list" from first function
+and display the amount of both arg1 and arg2.
+
+main function will use both other functions
+"""
+
+
+import random
+
+#Takes 3 arguments from user by input
+def flip_coins(arg1,arg2,runs):
+
+    arg1 = 0                #counter for each argument
+    arg2 = 0
+    
+    while arg1 + arg2 != runs:    #user input both arguments and "runs"
+        d = random.randint(1,2)
+        if d == 1:
+            arg1 += 1
+        elif d == 2:
+            arg2 += 1
+            
+    a_list =[arg1,arg2]
+    
+    return a_list            #returning a list with arg1 and arg2 values
+
+
+
+
+
+def coin_result(arg_list,input1,input2):
+    
+    input1 = input1.lower()     #converting user input to lower
+    input2 = input2.lower()
+
+    print(arg_list[0],input1,"and",arg_list[1],input2) #print a_list's two objects
+
+
+
+
+def main():
+
+    choice1 = "MUSHROOMS"       #can be done by user input instead
+    choice2 = "STRAWBERRIES"
+    how_many = 100
+    
+    coin_result(flip_coins(choice1,choice2,how_many),choice1,choice2)
+    # coin_result gets its arguments from flip_coins (the list with the values, 53+47 etc)
+    # + user input "choice 1" & "choice2" which are the names.
+    
+    #flip_coins gets its arguments from user input "choice 1" and "choice 2"
+    # & how_many and will return a list with values
+
+if __name__=='__main__':
+    main()
