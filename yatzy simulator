@@ -5,6 +5,7 @@ Yatzysimulator - How many throws does it take to get yatzy?
 import random
 
 #--function which throws 5 dice and counts how many tries it takes for yatzy--#
+
 def yatzy():
 
     times = 0       #times += 1 each time the dices is thrown
@@ -19,19 +20,20 @@ def yatzy():
         for i in range(len(throw)):     #is the same as the first nr in "throw"
         
             if throw[i] == throw[0]:   #checks if [i] is the same as [0]
-                same += 1              #if it is the same nr then same += 1
+                same += 1              #if it is the same then "same" += 1
                 
-        times += 1       #adding 1 to times to mark that a throw has occurred
+        times += 1       #adding 1 to "times" to mark that a throw has occurred
  
-        if same == 5:       #ending the function if same has reached 5
+        if same == 5:       #ending the function if "same" has reached 5
             break           #which means that all nr in list "throw" is the same
             
     return times            #when function ends, it will return how many times
                             #it took to get yatzy
 
 
-#--function which gets tries as input from main function, running yatzy() as many times as
-#tries and divides total throws with how many tries. The more tries, the more exact result--#
+#--function which gets "tries" as input from main function, running yatzy() as many times as
+#tries and divides total throws with amount of tries. The more tries, the more precise result--#
+
 def many_yatzy(tries):
 
     print("Simulating",tries,"tries...")
@@ -43,6 +45,7 @@ def many_yatzy(tries):
 
     exact_yatzy = round(sum(list_all)/tries)    #divides the total amount of throws with amount
                                                 #yatzys which gives an average throws required
+                                                
     print("Fastest yatzy:",min(list_all),"\nSlowest yatzy:",max(list_all))    #print max/min
                 
     return exact_yatzy          #returns average to main function
@@ -50,6 +53,7 @@ def many_yatzy(tries):
 
 #--main function prints out the average amount of throws it takes to get a yatzy. It
 #requires an input from user of how many yatzy it should roll--#
+
 def main(x):
 
     print("Average tries before Yatzy:",many_yatzy(x))
