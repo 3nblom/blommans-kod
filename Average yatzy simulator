@@ -56,4 +56,4 @@ def main(x):
     print("Average tries before Yatzy:",many_yatzy(x))
 
 if __name__=='__main__':
-    main(100)
+    main(1000)
