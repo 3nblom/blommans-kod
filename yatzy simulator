@@ -30,7 +30,6 @@ def yatzy():
     return times            #when function ends, it will return how many times
                             #it took to get yatzy
 
-
 #--function which gets "tries" as input from main function, running yatzy() as many times as
 #tries and divides total throws with amount of tries. The more tries, the more precise result--#
 
@@ -42,14 +41,12 @@ def many_yatzy(tries):
     for i in range(tries):
         list_all.append(yatzy())
         
-
     exact_yatzy = round(sum(list_all)/tries)    #divides the total amount of throws with amount
                                                 #yatzys which gives an average throws required
                                                 
     print("Fastest yatzy:",min(list_all),"\nSlowest yatzy:",max(list_all))    #print max/min
                 
     return exact_yatzy          #returns average to main function
-
 
 #--main function prints out the average amount of throws it takes to get a yatzy. It
 #requires an input from user of how many yatzy it should roll--#
