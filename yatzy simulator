@@ -1,5 +1,5 @@
 """
-Yatzysimulator - How many throws (5 dice) does it take to get yatzy?
+Yatzysimulator - How many throws does it take to get yatzy?
 """
 
 import random
@@ -7,7 +7,7 @@ import random
 #--function which throws 5 dice and counts how many tries it takes for yatzy--#
 def yatzy():
 
-    times = 0       #times += 1 each time yatzy is not thrown
+    times = 0       #times += 1 each time the dices is thrown
     
     while True:         #function runs until "break"
         
