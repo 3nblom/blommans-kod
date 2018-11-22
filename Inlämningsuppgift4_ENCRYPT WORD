@@ -1,4 +1,20 @@
-alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ'   #upper case to match user input
+"""
+------Inlämningsuppgift 4 - Marcus Enblom------
+
+Program för kryptering
+"""
+
+def func1(string):
+
+    string = string.upper()
+
+    print("*",end='')
+    for i in string:
+        print(str(i) + "*",end='')
+
+    return ""
+
+alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖA1a2b3c4d5e6f7g8h9i0j'   #upper case to match user input
     
 
 def func2(arg):                 
@@ -21,7 +37,9 @@ def main():
     while True:
 
         word = str(input("Ange ett ord: "))
-        word = word.upper()                             #upper case to match alphabet
+        word = word.upper()                 #upper case to match alphabet
+        word = word.strip()
+        print(func1(word))
         print(word," krypterat blir: ",func2(word))
         print("")
 
