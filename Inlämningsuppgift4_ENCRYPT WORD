@@ -1,0 +1,29 @@
+alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ'   #upper case to match user input
+    
+
+def func2(arg):                 
+
+    new_arg = ""                #empty string which will be filled in
+
+    for i in range(len(arg)):   #run the loop as long as there's chars in arg
+        character = arg[i]      #variable which is i's position in arg
+        location = alphabet.find(character) #find location of character in alphabet
+        new_location = (location + 1)   #take that location and +1
+        new_arg += alphabet[new_location]  #new character is assigned the next
+                                           #postion in alphabet
+    return new_arg          #return the new string
+
+
+
+def main():
+
+    
+    while True:
+
+        word = str(input("Ange ett ord: "))
+        word = word.upper()                             #upper case to match alphabet
+        print(word," krypterat blir: ",func2(word))
+        print("")
+
+if __name__=='__main__':
+    main()
