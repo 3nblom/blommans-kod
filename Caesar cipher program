@@ -1,0 +1,19 @@
+#--Caesar cipher program--#
+
+alfabet = 'abcdefg'         #Lista krävs för att kunna söka igenom och hämta
+                            #nästa tecken
+
+def func(mening):           #Hämtar en mening som argument
+
+    mening_2 = ''           #En tom lista krävs då denna fylls på med nya
+
+    for i in range(len(mening)):        #Kör en loop genom hela meningen
+        tecken = mening[i]              #variabel som är första tecknet
+        plats = alfabet.find(tecken)    #Vilken plats har den i "alfabet"?
+        ny_plats = (plats + 1)          #Variabel som tar "plats" + 1
+        mening_2 += alfabet[ny_plats]   #Lägg till tecknet från den nya platsen
+                                        #..i alfabetet i "mening_2
+    return mening_2                     #Returnera nya "mening_2" där alla
+                                        #..tecken har förskjutits ett steg
+
+print(func("abc"))
