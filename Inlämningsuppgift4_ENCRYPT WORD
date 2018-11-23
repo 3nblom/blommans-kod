@@ -3,7 +3,9 @@
 
 Program för kryptering
 """
+import re
 
+###--function which adds symbols between every character--###
 def func1(string):
 
     string = string.upper()
@@ -14,31 +16,60 @@ def func1(string):
 
     return ""
 
-alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖA1a2b3c4d5e6f7g8h9i0j'   #upper case to match user input
-    
 
+###--function which takes a character and assign the following character in a list (alphabet or special)--###
 def func2(arg):                 
 
     new_arg = ""                #empty string which will be filled in
 
     for i in range(len(arg)):   #run the loop as long as there's chars in arg
         character = arg[i]      #variable which is i's position in arg
-        location = alphabet.find(character) #find location of character in alphabet
-        new_location = (location + 1)   #take that location and +1
-        new_arg += alphabet[new_location]  #new character is assigned the next
-                                           #postion in alphabet
+        if character in alphabet:           #if char in "alphabet" - check "alphabet" string
+            location = alphabet.find(character) #find location of character in alphabet
+            new_location = (location + 1)   #take that location and +1
+            new_arg += alphabet[new_location]  #new character is assigned next char in "alphabet"
+        elif character in special:          #same as above but in "special"
+            location = special.find(character)
+            new_location = (location + 1)
+            new_arg += special[new_location]
+        elif character == " ":
+            new_arg += "-"          #change all spaces to "-" sign to separate words
+        else:
+            new_arg += "?"  #if user input a symbol not in the two lists, the encrypted symbol will be "?"
+            
     return new_arg          #return the new string
 
 
 
+###--function which removes all spaces that is followed by a space. Limits a space to one space--###
+def change(arg):
+
+    new_arg = ""            
+    no_use = ""                 #stores all unwanted spaces
+
+    for i in range(len(arg)):       #loop which runs through arg and stores all double space in "no_use"
+        character = arg[i]
+        if character == " " and arg[i+1] == " ":
+            no_use += character
+        else:
+            new_arg += character    #stores all valid characters/symbols in return string
+            
+    return new_arg
+
+
+alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖA1a2b3c4d5e6f7g8h9i0j'   #upper case to match user input
+special = "!\#€%&/()=?+-<>,._'*^¨´`•!"                            #works as an alphabet for special symbols
+
+            
+###--main function--###
 def main():
 
     
     while True:
-
         word = str(input("Ange ett ord: "))
         word = word.upper()                 #upper case to match alphabet
-        word = word.strip()
+        word = word.strip()                 #remove spaces before and after word
+        word = change(word)                 #runs change() to remove all double spaces
         print(func1(word))
         print(word," krypterat blir: ",func2(word))
         print("")
