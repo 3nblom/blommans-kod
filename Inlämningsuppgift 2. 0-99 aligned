@@ -1,0 +1,27 @@
+#UPPGIFT 2 - Marcus Enblom
+
+for i in range(0,100):
+    if i % 10 == 0:
+        print("")
+    print(f"{i:>2d}", end=" ")
+
+
+
+
+#rad 2: Formatteringen - "f{i:>2d}" gör så att siffrorna (i) behandlas-
+#som ett tvåtal även när de är ett ental. Detta för att linjera enkeltalen-
+#ovanför varandra. 2an innan d(digit) bestämmer hur talen ska ställas.
+#Om man istället vill ha tretal i loopen och att entalen ska linjeras så-
+#krävs det att man byter ut 2an till en 3a. Se program nedan:
+
+#for i in range(0,110):
+#    if i % 10 == 0:
+#        print("")
+#    print("{:>3d}".format(i), end=" ")
+
+
+# if i % 10 == 0: Denna skrivs ut för att göra ett hopp vid varje-
+#nytt tiotal. Eftersom det endast är jämna tiotal som kan få 0 som rest-
+#när man delar med 10 så kommer den att hoppa innan varje jämnt tiotal.
+
+#print("") för att göra själva hoppet.
