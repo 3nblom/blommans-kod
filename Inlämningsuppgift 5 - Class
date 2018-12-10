@@ -1,0 +1,44 @@
+
+
+#Skapar en klass "Bil" som både kan köra samt stanna.
+
+
+class Bil:
+
+    def __init__(self, year, drive = False):  #Year sätts vid skapandet av objektet
+                                              #drive sätts som False
+        self.year = year            #Assignar year och drive till objektet
+        self.drive = drive
+
+    def getYear(self):              #Metod som returnerar årsmodellen
+        return self.year
+
+    def status(self):               #Metod som returnerar status på "drive"
+        if self.drive == False:     
+            return "Bilen står stilla"
+        else:
+            return "Bilen kör"
+        
+    def start(self):                #Metod som ändrar "drive" till True
+        self.drive = True
+
+    def stop(self):                 #Metod som ändrar "drive" till False
+        self.drive = False
+
+
+
+
+
+def main():
+    fiat = Bil(2017)
+    print("Har nu skaffat mig en bil av ",fiat.getYear(),"års modell")
+    print(fiat.status())
+    print("Försöker starta bilen")
+    fiat.start()
+    print("Måste kolla om du kom igång... ",fiat.status())
+    print("Försöker få stopp på bilen")
+    fiat.stop()
+    print("Ska se om jag lyckades stanna den också... ",fiat.status())
+
+if __name__=='__main__':
+    main()
