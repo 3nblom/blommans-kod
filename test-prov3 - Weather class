@@ -4,76 +4,73 @@
 #Alla orter sparas i en lista
 #Användaren kan sedan välja att visa alla registrerade orter och dess väderlekar
 
-
-orter = []          #Sparar alla objekt (orter)
+orter = []
 
 class Weather:
-    """Skpaar objekt samt funktion som displayar objektet"""
 
-    def __init__(self, namn, temp, mm, ms):
-        self.namn = namn
+    def __init__(self, name, temp, mm, ms):
+        self.name = name
         self.temp = temp
         self.mm = mm
         self.ms = ms
-
+        
     def display(self):
-        print(self.namn,end="\t")
-        print(self.temp,end="\t")
-        print(self.mm,end="\t")
-        print(self.ms)
+        print(self.name,self.temp,self.mm,self.ms)
 
 
-def ny_ort():
-    namn = input("Ange ortens namn: ")
-    temp = input("Ange temperatur: ")
-    mm = input("Ange nederbörd (mm): ")
-    ms = input("Ange vind (m/s): ")
-    print("Uppgifterna registrerade")
+def menu():
 
-    namn = namn.title()                     #Ändrar till stor bokstav i början
-    
-    orter.append(Weather(namn, temp, mm, ms))   #Lägger till objekt i listan
-
-def meny():
-
-    rubrik = "VÄDERLEK"
-    print("\n",rubrik)
-    print("="*len(rubrik))
+    header = "VÄDERLEK"
+    print("")
+    print(header)
+    print("="*len(header))
     print("1 Registrera ort + väderlek")
     print("2 Visa alla registrerade resultat")
-    print("3 Avsluta")
-    
+    print("3 Avsluta\n")
+
+    choice = input("Välj: ")
+    print("")
+
+    return choice
+
+
+def register():
+
+    ort = input("Ange ortens namn: ")
+    temp = input("Ange temperatur: ")
+    mm = input("Ange mm: ")
+    ms = input("Ange ms: ")
+
+    ort = ort.title()                       #Ändrar till stor bokstav i början
+    ort = Weather(ort, temp, mm, ms)        #Sparar ned objektet i listan "orter"
+
+    orter.append(ort)
+
+
+def call_register():
+
+    for i in range(len(orter)):                  #Lägger alla objekt i bokstavsordning
+        for j in range(i+1,len(orter)):
+            if (orter[i].name > orter[j].name):
+                tmp = orter[i]
+                orter[i] = orter[j]
+                orter[j] = tmp
+                        
+    for i in range(len(orter)):                 #Kör metoden "display" för alla objekt i listan "orter"
+        orter[i].display()
+
 
 while True:
 
-    meny()
-    val = input("Välj: ")
-    print("")
-    if val == "1":
-        if len(orter) <= 30:
-            ny_ort()
-        else:
-            print("Du har redan angett 30 orter")
+    choice = menu()
 
-    elif val == "2":                #om val är 2 (visa alla orter)
-        if len(orter) > 0:          #Så länge det finns minst ett objekt i listan
-
-            for i in range(len(orter)):         #Lägger alla objekt i bokstavsordning
-                for j in range(i+1,len(orter)):
-                    if (orter[i].namn > orter[j].namn):
-                        tmp = orter[i]
-                        orter[i] = orter[j]
-                        orter[j] = tmp
-            print("")
-            print("Ort\tTemperatur\tmm\tms")
-            for i in range(len(orter)):             #Skriver med "display()" ut alla
-                orter[i].display()                  #objekts attachments i listan
-                print("")
-                
-        else:
-            print("Du har ännu inte angett någon ort")
-    elif val == "3":
+    if choice == "1":
+        register()
+    elif choice == "2":
+        call_register()
+    elif choice == "3":
+        print("Hej då")
         break
 
     else:
-        print("Fel val")
+        print("Fel val. Försök igen")
