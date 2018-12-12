@@ -60,17 +60,22 @@ def call_register():
         orter[i].display()
 
 
-while True:
+def main():
+    
+    while True:
+        choice = menu()
 
-    choice = menu()
+        if choice == "1":
+            register()
+        elif choice == "2":
+            call_register()
+        elif choice == "3":
+            print("Hej då")
+            break
 
-    if choice == "1":
-        register()
-    elif choice == "2":
-        call_register()
-    elif choice == "3":
-        print("Hej då")
-        break
+        else:
+            print("Fel val. Försök igen")
 
-    else:
-        print("Fel val. Försök igen")
+
+if __name__=='__main__':
+    main()
