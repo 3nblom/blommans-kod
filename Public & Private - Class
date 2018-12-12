@@ -1,0 +1,10 @@
+#Private & Public methods in class
+
+class Cat:
+    def __init__(self, name, mood):
+        self.name = name
+        self.__mood = mood
+
+cat1 = Cat(Pelle, glad)
+print cat1.name
+print cat1.__mood
